@@ -1,0 +1,33 @@
+
+    [
+      {
+        "name": "Annual Charity Gala",
+        "type": "Fundraiser",
+        "date": "2024-11-10",
+        "attendees": 24
+      },
+      {
+        "name": "Tech Conference 2024",
+        "type": "Conference",
+        "date": "2024-10-15",
+        "attendees": 150
+      },
+      {
+        "name": "Summer Music Festival",
+        "type": "Festival",
+        "date": "2024-07-20",
+        "attendees": 5000
+      },
+      {
+        "name": "Art Exhibition Opening",
+        "type": "Exhibition",
+        "date": "2024-09-05",
+        "attendees": 100
+      },
+      {
+        "name": "Company Annual Retreat",
+        "type": "Retreat",
+        "date": "2024-12-01",
+        "attendees": 60
+      }
+    ]

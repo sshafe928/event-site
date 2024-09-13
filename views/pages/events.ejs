@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events page</title>
+    <link rel="stylesheet" type="text/css" href="/public/css/styles.css">
+</head>
+<body>
+    <header>
+        <!-- include ejs header -->
+        <%- include('../partials/header')%>
+    </header>
+    <main>
+            <div class="container">
+                <h1>Events List</h1>
+                <ul>
+                    <% events.forEach(function(event) { %>
+                        <div class="">
+                        <li>
+                            <strong><%= event.name %></strong><br>
+                            Type: <%= event.type %><br>
+                            Date: <%= event.date %><br>
+                            Attendees: <%= event.attendees %>
+                        </li>
+                    </div>
+                    <% }); %>
+                </ul>            
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <% include("../partials/footer"); %>
+    </footer>
+</body>
+</html>

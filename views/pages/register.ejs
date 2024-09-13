@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Register</h1>
+        <form action="#" method="post">
+
+            <label for="event">Event:</label>
+            <select id="event" name="event">
+                <% events.forEach(function(event) { %>
+                    <option><%= event.name %></option>
+                    <% }); %> 
+            </select> 
+            <button type="submit">Send</button>
+        </form>
+</body>
+</html>
