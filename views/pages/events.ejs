@@ -3,35 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events page</title>
-    <link rel="stylesheet" type="text/css" href="/public/css/styles.css">
+    <title>Events Page</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css"> <!-- Adjusted path -->
 </head>
 <body>
     <header>
         <!-- include ejs header -->
-        <%- include('../partials/header')%>
+        <%- include('../partials/header') %>
     </header>
     <main>
-            <div class="container">
-                <h1>Events List</h1>
-                <ul>
-                    <% events.forEach(function(event) { %>
-                        <div class="">
-                        <li>
-                            <strong><%= event.name %></strong><br>
-                            Type: <%= event.type %><br>
-                            Date: <%= event.date %><br>
-                            Attendees: <%= event.attendees %>
-                        </li>
-                    </div>
-                    <% }); %>
-                </ul>            
+        <div class="container">
+            <h1>Events List</h1>
+
+            <!-- Admin Controls (conditional rendering based on admin status) -->
+            <% if (isAdmin) { %>
+                <div class="admin-controls">
+                    <h2>Admin Controls</h2>
+                    
+                    <!-- Form to add a new event -->
+                    <form action="/events/add" method="post">
+                        <h3>Add Event</h3>
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required><br>
+                        <label for="type">Type:</label>
+                        <input type="text" id="type" name="type" required><br>
+                        <label for="date">Date:</label>
+                        <input type="date" id="date" name="date" required><br>
+                        <label for="attendees">Attendees:</label>
+                        <input type="number" id="attendees" name="attendees" required><br>
+                        <button type="submit">Add Event</button>
+                    </form>
                 </div>
-            </div>
+            <% } %>
+
+            <ul>
+                <% events.forEach(function(event) { %>
+                    <li>
+                        <strong><%= event.name %></strong><br>
+                        Type: <%= event.type %><br>
+                        Date: <%= event.date %><br>
+                        Attendees: <%= event.attendees %>
+                        
+                        <% if (isAdmin) { %>
+                            <!-- Edit Button -->
+                            <a href="/events/edit/<%= event.id %>">Edit</a>
+                            
+                            <!-- Delete Form -->
+                            <form action="/events/delete/<%= event.id %>" method="post" style="display:inline;">
+                                <button type="submit">Delete</button>
+                            </form>
+                        <% } %>
+                    </li>
+                <% }); %>
+            </ul>
+            <%- include('../partials/registration')%>
         </div>
     </main>
     <footer>
-        <% include("../partials/footer"); %>
+        <%- include('../partials/footer') %>
     </footer>
 </body>
 </html>
