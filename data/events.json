@@ -1,58 +1,58 @@
 
 [
-  {
-      "name": "Annual Charity Gala",
-      "type": "Fundraiser",
-      "date": "2024-11-10",
-      "attendees": [
-          {
-              "name": "John Doe",
-              "email": "john.doe@example.com"
-          }
-      ]
-  },
-  {
-      "name": "Tech Conference 2024",
-      "type": "Conference",
-      "date": "2024-10-15",
-      "attendees": [
-          {
-              "name": "Jane Smith",
-              "email": "jane.smith@example.com"
-          }
-      ]
-  },
-  {
-      "name": "Summer Music Festival",
-      "type": "Festival",
-      "date": "2024-07-20",
-      "attendees": [
-          {
-              "name": "Alice Johnson",
-              "email": "alice.johnson@example.com"
-          }
-      ]
-  },
-      {
-        "name": "Art Exhibition Opening",
-        "type": "Exhibition",
-        "date": "2024-09-05",
-        "attendees": [
-          {
-              "name": "Alice Johnson",
-              "email": "alice.johnson@example.com"
-          }
-      ]
-      },
-      {
-        "name": "Company Annual Retreat",
-        "type": "Retreat",
-        "date": "2024-12-01",
-        "attendees": [
-          {
-              "name": "Alice Johnson",
-              "email": "alice.johnson@example.com"
-          }
-      ]
-      }
+{
+    "name": "Annual Charity Gala",
+    "type": "Fundraiser",
+    "date": "2024-11-10",
+    "attendees": [
+        {
+            "name": "John Doe",
+            "email": "john.doe@example.com"
+        }
     ]
+},
+{
+    "name": "Tech Conference 2024",
+    "type": "Conference",
+    "date": "2024-10-15",
+    "attendees": [
+        {
+            "name": "Jane Smith",
+            "email": "jane.smith@example.com"
+        }
+    ]
+},
+{
+    "name": "Summer Music Festival",
+    "type": "Festival",
+    "date": "2024-07-20",
+    "attendees": [
+        {
+            "name": "Alice Johnson",
+            "email": "alice.johnson@example.com"
+        }
+    ]
+},
+    {
+    "name": "Art Exhibition Opening",
+    "type": "Exhibition",
+    "date": "2024-09-05",
+    "attendees": [
+        {
+            "name": "Alice Johnson",
+            "email": "alice.johnson@example.com"
+        }
+    ]
+    },
+    {
+    "name": "Company Annual Retreat",
+    "type": "Retreat",
+    "date": "2024-12-01",
+    "attendees": [
+        {
+            "name": "Alice Johnson",
+            "email": "alice.johnson@example.com"
+        }
+    ]
+    }
+]

@@ -50,13 +50,29 @@
                             
                             <!-- Delete Form -->
                             <form action="/events/delete/<%= event.id %>" method="post" style="display:inline;">
-                                <button type="submit">Delete</button>
+                                <button id='delete' type="submit">Delete</button>
                             </form>
                         <% } %>
                     </li>
                 <% }); %>
             </ul>
-            <%- include('../partials/registration')%>
+            <h1>Register</h1>
+            <form id="registrationForm" action="/events" method="post">
+                <label for="event">Event:</label>
+                <select id="event" name="event" required>
+                    <% events.forEach(function(event) { %>
+                        <option value="<%= event.name %>"><%= event.name %></option>
+                    <% }); %>
+                </select>
+
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <button type="submit">Register</button>
+            </form>
         </div>
     </main>
     <footer>
