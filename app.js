@@ -54,6 +54,48 @@ app.get('/events', (req, res) => {
     res.render('pages/events', { isAdmin: Adminstatus, events: jsonData });
 });
 
+
+app.post('/events', (req, res) => {
+    const data = req.body;
+    const filePath = path.join(__dirname, 'events.json');
+
+    fs.readFile(filePath, 'utf8', (err, fileData) => {
+        if (err) {
+            return res.status(500).json({ success: false, message: 'Error reading file' });
+        }
+
+        let jsonData = [];
+
+        try {
+            jsonData = JSON.parse(fileData);
+        } catch (e) {
+            return res.status(500).json({ success: false, message: 'Error parsing JSON' });
+        }
+
+        // Find the event to update
+        const event = jsonData.find(e => e.name === data.eventName);
+        if (event) {
+            // Add new attendee
+            if (data.attendee && data.attendee.name && data.attendee.email) {
+                event.attendees.push(data.attendee);
+            } else {
+                return res.status(400).json({ success: false, message: 'Invalid attendee data' });
+            }
+        } else {
+            return res.status(404).json({ success: false, message: 'Event not found' });
+        }
+
+        // Write updated data back to file
+        fs.writeFile(filePath, JSON.stringify(jsonData, null, 2), 'utf8', (err) => {
+            if (err) {
+                return res.status(500).json({ success: false, message: 'Error writing file' });
+            }
+
+            res.json({ success: true });
+        });
+    });
+});
+
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
