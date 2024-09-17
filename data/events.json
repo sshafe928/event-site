@@ -1,58 +1,37 @@
-
 [
-{
-    "name": "Annual Charity Gala",
-    "type": "Fundraiser",
-    "date": "2024-11-10",
-    "attendees": [
-        {
-            "name": "John Doe",
-            "email": "john.doe@example.com"
-        }
-    ]
-},
-{
-    "name": "Tech Conference 2024",
-    "type": "Conference",
-    "date": "2024-10-15",
-    "attendees": [
-        {
-            "name": "Jane Smith",
-            "email": "jane.smith@example.com"
-        }
-    ]
-},
-{
+  {
+    "id": 6,
+    "name": "Health and Wellness Expo",
+    "type": "Expo",
+    "date": "2024-11-01",
+    "attendees": "Health professionals, general public"
+  },
+  {
+    "id": 7,
+    "name": "Holiday Networking Mixer",
+    "type": "Networking Event",
+    "date": "2024-12-15",
+    "attendees": "Business professionals"
+  },
+  {
+    "id": 8,
     "name": "Summer Music Festival",
-    "type": "Festival",
-    "date": "2024-07-20",
-    "attendees": [
-        {
-            "name": "Alice Johnson",
-            "email": "alice.johnson@example.com"
-        }
-    ]
-},
-    {
+    "type": "Music Festival",
+    "date": "2024-07-10",
+    "attendees": "Music lovers, bands"
+  },
+  {
+    "id": 9,
+    "name": "Startup Pitch Competition",
+    "type": "Competition",
+    "date": "2024-09-30",
+    "attendees": "Entrepreneurs, investors"
+  },
+  {
+    "id": 10,
     "name": "Art Exhibition Opening",
     "type": "Exhibition",
-    "date": "2024-09-05",
-    "attendees": [
-        {
-            "name": "Alice Johnson",
-            "email": "alice.johnson@example.com"
-        }
-    ]
-    },
-    {
-    "name": "Company Annual Retreat",
-    "type": "Retreat",
-    "date": "2024-12-01",
-    "attendees": [
-        {
-            "name": "Alice Johnson",
-            "email": "alice.johnson@example.com"
-        }
-    ]
-    }
+    "date": "2024-10-15",
+    "attendees": "Artists, art enthusiasts"
+  }
 ]

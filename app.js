@@ -1,29 +1,32 @@
-const fs = require('fs');
-const path = require('path');
-const express = require('express');
-const bodyParser = require('body-parser');
-const app = express();
-const PORT = 5000;
-
-// Read and parse JSON data
-let jsonData;
-const eventData = fs.readFileSync(path.join(__dirname, 'data', 'events.json'), 'utf8');
-jsonData = JSON.parse(eventData);
-
+const express = require('express')
+const bodyParser = require("body-parser")
+const fs = require('fs')
+const app = express()
+const PORT = 5000
+const path = require('path')
+let Adminstatus = false;
 const ADMIN = { username: 'admin_man', password: 'givemeinfo'};
 
-// Global variable for admin status
-let Adminstatus = false;
-
-app.use(bodyParser.urlencoded({ extended: true })); 
+//Middleware
+app.use(bodyParser.urlencoded({extended: true}));
 app.use('/public', express.static(path.join(__dirname, 'public')));
-
-// Set up EJS
 app.set('view engine', 'ejs');
+
+//load tasks from the JSON file
+const getEvents = () => {
+    const data = fs.readFileSync('./data/events.json', 'utf8');
+    return JSON.parse(data);
+};
+
+const saveEvents = (events) => {
+    fs.writeFileSync('./data/events.json', JSON.stringify(events, null, 2));
+};
+
 
 // Route for the home page
 app.get('/', (req, res) => {
-    res.render('pages/events', { events: jsonData, isAdmin: Adminstatus });
+    const events = getEvents();
+    res.render('pages/events', { events: events, isAdmin: Adminstatus });
 });
 
 // Route for admin login page
@@ -43,13 +46,62 @@ app.post('/admin', (req, res) => {
 
 // Render events page
 app.get('/events', (req, res) => {
-    res.render('pages/events', { isAdmin: Adminstatus, events: jsonData });
+    const events = getEvents();
+    res.render('pages/events', { isAdmin: Adminstatus, events: events });
 });
 
 
-//registering for an event
+
+app.post('/events/add', (req, res) => {
+    const events = getEvents();
+    const newEvent = {
+        id: events.length+1,
+        name: req.body.name,
+        date: req.body.date,
+        type: req.body.type,
+        attendees: req.body.attendees
+    };
+    events.push(newEvent);
+    saveEvents(events);
+    res.redirect('/events');
+});
+
+
+app.get('/edits/:id/edit', (req, res) => {
+    const events = getEvents();
+    const event = events.find(event => event.id == req.params.id)
+    res.render('pages/edits', { event });
+});
+
+
+app.post('/edits/:id', (req,res) => {
+    const events = getEvents();
+    const eventIndex = events.findIndex(events => events.id == req.params.id)//finding the right item
+    events[eventIndex].type = req.body.type; //redefine the task data
+    events[eventIndex].name = req.body.name; //redefine the task data
+    events[eventIndex].date = req.body.date; 
+    events[eventIndex].attendees = req.body.attendees; 
+    saveEvents(events)
+    res.redirect('/events');
+});
+
+//delete an event
+app.post('/events/:id/delete',(req,res) => {
+    let events = getEvents();
+    const idToDelete = parseInt(req.params.id, 10);
+    events = events.filter(event => event.id !== idToDelete);
+    saveEvents(events);
+    res.redirect('/events');
+});
+
+
+
+
+
+
+
+// registering for an event
 app.post('/events', (req, res) => {
-    if (id ='submit') {
         const { event, name, email } = req.body;
         if (!event || !name || !email) { return res.status(400).json({ success: false, message: 'Missing required fields' });}
         const attendeeData = {
@@ -65,53 +117,18 @@ app.post('/events', (req, res) => {
             if (err) { return res.status(500).json({ success: false, message: 'Error reading file' });}
 
             let jsonData = [];
-
             jsonData = JSON.parse(fileContent);
-
             jsonData.push(attendeeData);
 
             // Write updated data back to file
             fs.writeFile(filePath, JSON.stringify(jsonData, null, 2), 'utf8', (err) => {
                 if (err) {return res.status(500).json({ success: false, message: 'Error writing file' });}
 
-                res.json({ success: true });
+                res.redirect('/events');
             });
         });
-    }else if (id="delete"){
-        app.delete('/delete-entry/:id', (req, res) => {
-            const entryId = req.params.id;
-            const filePath = path.join(__dirname, '/data/events.json');
-        
-            // Read and parse the JSON file
-            fs.readFile(filePath, 'utf8', (err, fileData) => {
-                if (err) {return res.status(500).json({ success: false, message: 'Error reading data file.' });}
-        
-                let jsonData;
-                try {
-                    jsonData = JSON.parse(fileData);
-                } catch (parseErr) {
-                    return res.status(500).json({ success: false, message: 'Error parsing data file.' });
-                }
-        
-                // Find and remove the entry by ID
-                const updatedData = jsonData.filter(item => String(item.id) !== String(entryId));
-        
-                if (updatedData.length === jsonData.length) {
-                    // No entry was found
-                    return res.status(404).json({ success: false, message: 'Entry not found.' });
-                }
-        
-                // Write updated data back to file
-                fs.writeFile(filePath, JSON.stringify(updatedData, null, 2), 'utf8', (err) => {
-                    if (err) {
-                        return res.status(500).json({ success: false, message: 'Error writing data file.' });
-                    }
-                    res.json({ success: true });
-                });
-            });
-        });
-    }
 });
+    
 
 
 // Start the server
