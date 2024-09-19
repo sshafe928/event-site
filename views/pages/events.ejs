@@ -42,7 +42,7 @@
                         <strong><%= event.name %></strong><br>
                         Type: <%= event.type %><br>
                         Date: <%= event.date %><br>
-                        Attendees: <%= event.attendees.length %>
+                        Attendees: <%= event.attendees %>
                         
                         <% if (isAdmin) { %>
                             <button class="edit-button"><a href="/edits/<%= event.id %>/edit">Edit</a></button>

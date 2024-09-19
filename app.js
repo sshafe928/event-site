@@ -121,6 +121,7 @@ app.post('/events', (req, res) => {
 
     // Read the registration file
     fs.readFile(registrationFilePath, 'utf8', (err, fileContent) => {
+
         let registrationData = JSON.parse(fileContent);
         registrationData.push(attendeeData);
 
@@ -129,25 +130,16 @@ app.post('/events', (req, res) => {
 
             // Now update the events.json file
             fs.readFile(eventsFilePath, 'utf8', (err, eventsContent) => {
+               
+
                 let eventsData = JSON.parse(eventsContent);
                 const eventToUpdate = eventsData.find(e => e.name === event);
 
-                // Check if the event exists
-                if (!eventToUpdate) {
-                    return res.status(404).json({ success: false, message: 'Event not found' });
-                }
-
-                // Update the attendees count
-                eventToUpdate.attendees = eventToUpdate.attendees || [];
-                eventToUpdate.attendees.push(attendeeData);
-                eventToUpdate.numberOfAttendees = eventToUpdate.attendees.length;
+                // Increment the number of attendees
+                eventToUpdate.attendees += 1;
 
                 // Write updated events data back to file
                 fs.writeFile(eventsFilePath, JSON.stringify(eventsData, null, 2), 'utf8', (err) => {
-                    if (err) {
-                        return res.status(500).json({ success: false, message: 'Error writing events file' });
-                    }
-
                     res.redirect('/events');
                 });
             });
