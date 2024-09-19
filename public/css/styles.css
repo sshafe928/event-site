@@ -19,4 +19,53 @@ h1 {
     text-align: center;
     color: #333;
 }
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(178, 218, 255);
+    padding: 10px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
 
+nav ul {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li {
+    margin: 0 15px;
+}
+nav li.home{
+    margin-left: 45%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+nav li.home a {
+    font-size: 40px; 
+    color:rgb(17, 71, 137);
+    text-decoration:wavy;
+}
+
+nav li.admin-login {
+    font-size: 14px; 
+    margin-left: 35%;
+    margin-top:2%;
+}
+
+nav .admin-login a {
+    background-color: rgb(178, 218, 255); 
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+nav .admin-login a:hover {
+    background-color:  rgb(125, 166, 232); 
+}
