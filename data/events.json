@@ -24,14 +24,6 @@
     "id": 9,
     "name": "Startup Pitch Competition",
     "type": "Competition",
-    "date": "2024-09-30",
-    "attendees": 4
-  },
-  {
-    "id": 10,
-    "name": "Art Exhibition Opening",
-    "type": "Exhibition",
-    "date": "2024-10-15",
-    "attendees": 0
+    "date": "2024-09-30"
   }
 ]

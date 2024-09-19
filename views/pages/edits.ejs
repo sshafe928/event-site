@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./css/styles.css"> 
     <title>Document</title>
 </head>
 <body>
+    <%- include('../partials/header')%>
     <h1>Edit Event</h1>
     <form action="/edits/<%= event.id %>" method="POST">
         <input type="text" name="name" value="<%= event.name %>" required>
@@ -13,7 +15,7 @@
         <textarea cols="40" rows="10" name="type" required><%= event.type %></textarea>
         <button type="submit">Update Task</button>
     </form>
-    <a href="/">Back to list</a>
     <button type="button" class="back"><a href="/">Back to list</a></button>
+    <%- include('../partials/header')%>
 </body>
 </html>

@@ -2,6 +2,7 @@
     font-family: bingo;
     src: url(BingoHeyhoRegular.otf);
 }
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -11,18 +12,17 @@ body {
 
 .container {
     max-width: 800px;
+    height: 20em;
     margin: 20px auto; 
-    padding: 20px;
+    margin-top: 12%;
+    padding: 3%;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     list-style: none;
 }
 
-h1 {
-    text-align: center;
-    color: #333;
-}
+
 
 nav {
     display: flex;
@@ -52,8 +52,64 @@ nav li {
     font-size: 5em;
 }
 
+nav li.home {
+    margin-left: 20%;
+}
+
+nav li.admin-login {
+    font-size: 14px; 
+    margin-left: 10%; 
+}
+
+nav .admin-login a {
+    background-color: rgb(178, 218, 255); 
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+nav .admin-login a:hover {
+    background-color: rgb(125, 166, 232); 
+}
+
+
+
+h1.admin {
+    text-align: center;
+    font-family: bingo;
+    font-size: 10em;
+    margin-left: 40%;
+    margin-top: 1%;
+    position: absolute;
+    background: linear-gradient(to bottom, rgb(72, 107, 170), 
+    rgb(218, 231, 244)); 
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+
+    
+
+    
+}
+
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 3em;
+    border: 1px solid #ccc;
+    border-radius: 4px; 
+}
+
+
 button {
-    padding: 10px 20px; 
+    padding: 10px 20px;
+    width: 100%; 
     background-color: rgb(178, 218, 255);
     border: none;
     border-radius: 4px;
@@ -61,74 +117,11 @@ button {
     font-size: 16px;
     color: #333;
     margin: 10px 0; 
+    margin-top: 2em;
 }
 
 button:hover {
     background-color: rgb(150, 200, 255);
-}
-
-.admin-controls {
-    max-width: 70em;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h2{
-    justify-content: center;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-td {
-    padding: 15px;
-    vertical-align: top;
-    border: 1px solid #ddd; 
-}
-
-h3 {
-    margin-top: 0;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-    color: #555;
-}
-
-input[type="text"],
-input[type="date"],
-input[type="number"],
-input[type="email"] {
-    width: auto;
-    max-width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.edit-button, .delete-button {
-    padding: 5px 10px; 
-    margin-left: 10px;
-    background-color: rgb(178, 218, 255);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.edit-button:hover, .delete-button:hover {
-    background-color: rgb(150, 200, 255);
-}
-
-button a {
-    text-decoration: none; 
-    color: #333; 
 }
 
 .footer-dark {

@@ -34,6 +34,11 @@ app.get('/admin', (req, res) => {
     res.render('pages/admin');
 });
 
+app.get('/logout',(req,res) => {
+    const events = getEvents();
+    res.render('pages/events', { isAdmin: false, events: events })
+})
+
 // Handle admin login
 app.post('/admin', (req, res) => {
     const { username, password } = req.body;
