@@ -2,36 +2,36 @@
   {
     "id": 6,
     "name": "Health and Wellness Expo",
-    "type": "Expo",
+    "type": "Expo for welness and stuff",
     "date": "2024-11-01",
-    "attendees": "Health professionals, general public"
+    "attendees": 7
   },
   {
     "id": 7,
     "name": "Holiday Networking Mixer",
     "type": "Networking Event",
     "date": "2024-12-15",
-    "attendees": "Business professionals"
+    "attendees": 12
   },
   {
     "id": 8,
     "name": "Summer Music Festival",
     "type": "Music Festival",
     "date": "2024-07-10",
-    "attendees": "Music lovers, bands"
+    "attendees": 4
   },
   {
     "id": 9,
     "name": "Startup Pitch Competition",
     "type": "Competition",
     "date": "2024-09-30",
-    "attendees": "Entrepreneurs, investors"
+    "attendees": 4
   },
   {
     "id": 10,
     "name": "Art Exhibition Opening",
     "type": "Exhibition",
     "date": "2024-10-15",
-    "attendees": "Artists, art enthusiasts"
+    "attendees": 2
   }
 ]

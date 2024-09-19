@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events Page</title>
-    <link rel="stylesheet" type="text/css" href="/css/styles.css"> <!-- Adjusted path -->
+    <link rel="stylesheet" type="text/css" href="./css/styles.css"> 
 </head>
 <body>
     <header>
@@ -15,7 +15,7 @@
         <div class="container">
             <h1>Events List</h1>
 
-            <!-- Admin Controls (conditional rendering based on admin status) -->
+            <!-- Admin Controls-->
             <% if (isAdmin) { %>
                 <div class="admin-controls">
                     <h2>Admin Controls</h2>
@@ -36,12 +36,13 @@
                 </div>
             <% } %>
 
-            <ul>
+            <ul class="container">
                 <% events.forEach(function(event) { %>
                     <li>
                         <strong><%= event.name %></strong><br>
                         Type: <%= event.type %><br>
                         Date: <%= event.date %><br>
+                        Attendees: <%= event.attendees %><br>
                         
                         <% if (isAdmin) { %>
                             <button class="edit-button"><a href="/edits/<%= event.id %>/edit">Edit</a></button>

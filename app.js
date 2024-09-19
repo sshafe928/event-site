@@ -102,31 +102,61 @@ app.post('/events/:id/delete',(req,res) => {
 
 // registering for an event
 app.post('/events', (req, res) => {
-        const { event, name, email } = req.body;
-        if (!event || !name || !email) { return res.status(400).json({ success: false, message: 'Missing required fields' });}
-        const attendeeData = {
-            eventName: event,
-            attendee: {
-                name,
-                email
+    const { event, name, email } = req.body;
+    if (!event || !name || !email) {
+        return res.status(400).json({ success: false, message: 'Missing required fields' });
+    }
+
+    const attendeeData = {
+        eventName: event,
+        attendee: {
+            name,
+            email
+        }
+    };
+
+    const registrationPath = path.join(__dirname, 'data', 'registration.json');
+    const eventsPath = path.join(__dirname, 'data', 'events.json');
+
+    // Read the registration file
+    fs.readFile(registrationPath, 'utf8', (err, regContent) => {
+        if (err) {
+            return res.status(500).json({ success: false, message: 'Error reading registration file' });
+        }
+
+        let registrationData = JSON.parse(regContent);
+        registrationData.push(attendeeData);
+
+        // Write updated registration data back to file
+        fs.writeFile(registrationPath, JSON.stringify(registrationData, null, 2), 'utf8', (err) => {
+            if (err) {
+                return res.status(500).json({ success: false, message: 'Error writing registration file' });
             }
-        };
-        const filePath = path.join(__dirname, 'data', 'registration.json');
 
-        fs.readFile(filePath, 'utf8', (err, fileContent) => {
-            if (err) { return res.status(500).json({ success: false, message: 'Error reading file' });}
+            // Update events file to increment attendee count
+            fs.readFile(eventsPath, 'utf8', (err, eventsContent) => {
+                if (err) {
+                    return res.status(500).json({ success: false, message: 'Error reading events file' });
+                }
 
-            let jsonData = [];
-            jsonData = JSON.parse(fileContent);
-            jsonData.push(attendeeData);
+                let eventsData = JSON.parse(eventsContent);
+                const eventIndex = eventsData.findIndex(e => e.name === event);
 
-            // Write updated data back to file
-            fs.writeFile(filePath, JSON.stringify(jsonData, null, 2), 'utf8', (err) => {
-                if (err) {return res.status(500).json({ success: false, message: 'Error writing file' });}
+                if (eventIndex !== -1) {
+                    eventsData[eventIndex].attendees = (eventsData[eventIndex].attendees || 0) + 1;
+                }
 
-                res.redirect('/events');
+                // Write updated events data back to file
+                fs.writeFile(eventsPath, JSON.stringify(eventsData, null, 2), 'utf8', (err) => {
+                    if (err) {
+                        return res.status(500).json({ success: false, message: 'Error writing events file' });
+                    }
+
+                    res.redirect('/events');
+                });
             });
         });
+    });
 });
     
 
