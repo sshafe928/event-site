@@ -11,14 +11,14 @@
     "name": "Holiday Networking Mixer",
     "type": "Networking Event",
     "date": "2024-12-15",
-    "attendees": 12
+    "attendees": 0
   },
   {
     "id": 8,
     "name": "Summer Music Festival",
     "type": "Music Festival",
     "date": "2024-07-10",
-    "attendees": 4
+    "attendees": 0
   },
   {
     "id": 9,
@@ -32,6 +32,6 @@
     "name": "Art Exhibition Opening",
     "type": "Exhibition",
     "date": "2024-10-15",
-    "attendees": 2
+    "attendees": 0
   }
 ]

@@ -9,7 +9,7 @@ const ADMIN = { username: 'admin_man', password: 'givemeinfo'};
 
 //Middleware
 app.use(bodyParser.urlencoded({extended: true}));
-app.use('/public', express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
 //load tasks from the JSON file
@@ -100,9 +100,10 @@ app.post('/events/:id/delete',(req,res) => {
 
 
 
-// registering for an event
 app.post('/events', (req, res) => {
     const { event, name, email } = req.body;
+
+    // Check for required fields
     if (!event || !name || !email) {
         return res.status(400).json({ success: false, message: 'Missing required fields' });
     }
@@ -115,50 +116,36 @@ app.post('/events', (req, res) => {
         }
     };
 
-    const registrationPath = path.join(__dirname, 'data', 'registration.json');
-    const eventsPath = path.join(__dirname, 'data', 'events.json');
+    const registrationFilePath = path.join(__dirname, 'data', 'registration.json');
+    const eventsFilePath = path.join(__dirname, 'data', 'events.json');
 
     // Read the registration file
-    fs.readFile(registrationPath, 'utf8', (err, regContent) => {
-        if (err) {
-            return res.status(500).json({ success: false, message: 'Error reading registration file' });
-        }
+    fs.readFile(registrationFilePath, 'utf8', (err, fileContent) => {
 
-        let registrationData = JSON.parse(regContent);
+        let registrationData = JSON.parse(fileContent);
         registrationData.push(attendeeData);
 
         // Write updated registration data back to file
-        fs.writeFile(registrationPath, JSON.stringify(registrationData, null, 2), 'utf8', (err) => {
-            if (err) {
-                return res.status(500).json({ success: false, message: 'Error writing registration file' });
-            }
+        fs.writeFile(registrationFilePath, JSON.stringify(registrationData, null, 2), 'utf8', (err) => {
 
-            // Update events file to increment attendee count
-            fs.readFile(eventsPath, 'utf8', (err, eventsContent) => {
-                if (err) {
-                    return res.status(500).json({ success: false, message: 'Error reading events file' });
-                }
+            // Now update the events.json file
+            fs.readFile(eventsFilePath, 'utf8', (err, eventsContent) => {
+               
 
                 let eventsData = JSON.parse(eventsContent);
-                const eventIndex = eventsData.findIndex(e => e.name === event);
+                const eventToUpdate = eventsData.find(e => e.name === event);
 
-                if (eventIndex !== -1) {
-                    eventsData[eventIndex].attendees = (eventsData[eventIndex].attendees || 0) + 1;
-                }
+                // Increment the number of attendees
+                eventToUpdate.attendees += 1;
 
                 // Write updated events data back to file
-                fs.writeFile(eventsPath, JSON.stringify(eventsData, null, 2), 'utf8', (err) => {
-                    if (err) {
-                        return res.status(500).json({ success: false, message: 'Error writing events file' });
-                    }
-
+                fs.writeFile(eventsFilePath, JSON.stringify(eventsData, null, 2), 'utf8', (err) => {
                     res.redirect('/events');
                 });
             });
         });
     });
 });
-    
 
 
 // Start the server

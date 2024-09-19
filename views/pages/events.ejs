@@ -12,7 +12,7 @@
         <%- include('../partials/header') %>
     </header>
     <main>
-        <div class="container">
+        <div>
             <h1>Events List</h1>
 
             <!-- Admin Controls-->
@@ -38,11 +38,11 @@
 
             <ul class="container">
                 <% events.forEach(function(event) { %>
-                    <li>
+                    <li class="container">
                         <strong><%= event.name %></strong><br>
                         Type: <%= event.type %><br>
                         Date: <%= event.date %><br>
-                        Attendees: <%= event.attendees %><br>
+                        Attendees: <%= event.attendees %>
                         
                         <% if (isAdmin) { %>
                             <button class="edit-button"><a href="/edits/<%= event.id %>/edit">Edit</a></button>
