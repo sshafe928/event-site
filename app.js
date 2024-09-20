@@ -9,7 +9,7 @@ const ADMIN = { username: 'admin_man', password: 'givemeinfo'};
 
 //Middleware
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
 
 //load tasks from the JSON file

@@ -2,34 +2,44 @@
     font-family: bingo;
     src: url(BingoHeyhoRegular.otf);
 }
+
+:root {
+    --primary-color: #30427c;
+    --secondary-color: #d6e2f6;
+    --text-color: #333;
+    --background-color: #fff;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #d6e2f6;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    line-height: 1.6;
 }
 
 .container {
-    max-width: 800px;
-    margin: 20px auto; 
+    max-width: 1200px;
+    width: 90%;
+    margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: var(--background-color);
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    list-style: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+h1, h2, h3 {
     text-align: center;
-    color: #333;
+    color: var(--primary-color);
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(176, 198, 250);
-    padding: 10px 20px;
+    background-color: var(--primary-color);
+    padding: 10px 5%;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -44,107 +54,168 @@ nav ul {
 
 nav a {
     text-decoration: none;
-    color: white;
+    color: var(--background-color);
+    transition: color 0.3s ease;
 }
+
 nav li {
     margin: 0 15px;
-    font-family: bingo ;
-    font-size: 5em;
+    font-family: bingo, Arial, sans-serif;
+    font-size: 2.5em;
+}
+
+nav a:hover {
+    color: var(--secondary-color);
 }
 
 button {
-    padding: 10px 20px; 
-    background-color: rgb(178, 218, 255);
+    padding: 10px 20px;
+    background-color: var(--primary-color);
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    color: #333;
-    margin: 10px 0; 
+    color: var(--background-color);
+    margin: 10px 0;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: rgb(150, 200, 255);
+    background-color: #5a91d9;
+}
+
+#registrationForm {
+    max-width: 600px; 
+    margin: 20px auto; 
+    padding: 20px; 
+    background-color: var(--background-color); 
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+#registrationForm label {
+    display: block; 
+    margin-bottom: 5px;
+    color: var(--text-color); 
+}
+
+#registrationForm input[type="text"],
+#registrationForm input[type="email"],
+#registrationForm select {
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 15px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+#registrationForm input[type="text"]:focus,
+#registrationForm input[type="email"]:focus,
+#registrationForm select:focus {
+    border-color: var(--primary-color); 
+    outline: none; 
+}
+
+#registrationForm button {
+    padding: 10px 20px; 
+    background-color: var(--primary-color); 
+    border: none;
+    border-radius: 4px;
+    cursor: pointer; 
+    font-size: 16px; 
+    color: var(--background-color); 
+    transition: background-color 0.3s ease; 
+}
+
+#registrationForm button:hover {
+    background-color: #5a91d9; 
 }
 
 .admin-controls {
-    max-width: 70em;
+    max-width: 1200px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: var(--background-color);
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-h2{
-    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 20px;
 }
 
 td {
     padding: 15px;
     vertical-align: top;
-    border: 1px solid #ddd; 
-}
-
-h3 {
-    margin-top: 0;
+    border: 1px solid #ddd;
 }
 
 label {
     display: block;
     margin-bottom: 5px;
-    color: #555;
+    color: var(--text-color);
 }
 
 input[type="text"],
 input[type="date"],
 input[type="number"],
 input[type="email"] {
-    width: auto;
-    max-width: 100%;
+    width: 100%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus {
+    border-color: var(--primary-color);
+    outline: none;
 }
 
 .edit-button, .delete-button {
-    padding: 5px 10px; 
+    padding: 5px 10px;
     margin-left: 10px;
-    background-color: rgb(178, 218, 255);
+    background-color: var(--primary-color);
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    color: var(--background-color);
+    transition: background-color 0.3s ease;
 }
 
 .edit-button:hover, .delete-button:hover {
-    background-color: rgb(150, 200, 255);
+    background-color: #5a91d9;
 }
 
 button a {
-    text-decoration: none; 
-    color: #333; 
+    text-decoration: none;
+    color: inherit;
 }
 
 .footer-dark {
-    padding: 25px 0;
+    padding: 40px 0;
     color: #f0f9ff;
-    background-color: #282d32;
-    position: relative;
+    background-color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    margin-top: 13em;
 }
 
 .footer-dark h3 {
     margin-top: 0;
     margin-bottom: 12px;
     font-weight: bold;
-    font-size: 18px; 
+    font-size: 18px;
     text-transform: uppercase;
+    color: var(--background-color);
 }
 
 .footer-dark ul {
@@ -153,35 +224,76 @@ button a {
     line-height: 1.6;
     font-size: 14px;
     margin-bottom: 0;
-    
 }
 
 .footer-dark ul a {
     color: inherit;
     text-decoration: none;
     opacity: 0.7;
-    transition: opacity 0.3s, color 0.3s; 
+    transition: opacity 0.3s, color 0.3s;
 }
 
 .footer-dark ul a:hover {
     opacity: 1;
-    color: #78affb; 
-}
-
-.footer-dark .item p {
-    opacity: 0.6;
-    margin-bottom: 0;
-}
-
-.footer-dark .row{
-    margin-left: 45em;
-
+    color: var(--primary-color);
 }
 
 .footer-dark .copyright {
     text-align: center;
-    padding-top: 5px;
-    opacity: 0.5;
-    font-size: 10px;
+    padding-top: 24px;
+    opacity: 0.3;
+    font-size: 13px;
     margin-bottom: 0;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav li {
+        margin: 10px 0;
+        font-size: 2em;
+    }
+
+    .container, .admin-controls {
+        width: 95%;
+        padding: 10px;
+    }
+
+    table, tr, td {
+        display: block;
+    }
+
+    td {
+        border: none;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+    }
+
+    .footer-dark .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-dark .item {
+        text-align: center;
+        margin-bottom: 30px;
+    }
 }
