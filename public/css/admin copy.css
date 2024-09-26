@@ -1,9 +1,10 @@
 @font-face {
-    font-family: bingo;
-    src: url(BingoHeyhoRegular.otf);
+    font-family: bingo; /* Custom font definition */
+    src: url(BingoHeyhoRegular.otf); /* Font file source */
 }
 
 :root {
+    /* Color variables for consistent theming */
     --primary-color: #30427c;
     --secondary-color: #d6e2f6;
     --text-color: #333;
@@ -11,175 +12,174 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif; /* Default font for the body */
     margin: 0;
     padding: 0;
-    background-color: var(--secondary-color);
-    color: var(--text-color);
-    line-height: 1.6;
+    background-color: var(--secondary-color); /* Background color */
+    color: var(--text-color); /* Text color */
+    line-height: 1.6; /* Line height for readability */
 }
 
 .container {
-    max-width: 800px;
-    width: 90%;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: var(--background-color);
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 800px; /* Maximum width for main content */
+    width: 90%; /* Width relative to the viewport */
+    margin: 20px auto; /* Centering the container */
+    padding: 20px; /* Internal padding */
+    background-color: var(--background-color); /* Background for the container */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--primary-color);
-    padding: 10px 5%;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    display: flex; /* Flexbox for navigation layout */
+    justify-content: space-between; /* Space out items */
+    align-items: center; /* Center items vertically */
+    background-color: var(--primary-color); /* Nav background color */
+    padding: 10px 5%; /* Padding around nav */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Shadow for nav */
 }
 
 nav ul {
-    display: flex;
-    justify-content: center;
-    flex-grow: 1;
+    display: flex; /* Flexbox for horizontal list */
+    justify-content: center; /* Center the list items */
+    flex-grow: 1; /* Allow the list to grow */
     margin: 0;
     padding: 0;
-    list-style: none;
+    list-style: none; /* Remove bullet points */
 }
 
 nav a {
-    text-decoration: none;
-    color: var(--background-color);
-    transition: color 0.3s ease;
+    text-decoration: none; /* Remove underline from links */
+    color: var(--background-color); /* Link color */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
 }
 
 nav li {
-    margin: 0 15px;
-    font-family: bingo, Arial, sans-serif;
-    font-size: 2.5em;
+    margin: 0 15px; /* Spacing between list items */
+    font-family: bingo, Arial, sans-serif; /* Custom font for nav items */
+    font-size: 2.5em; /* Larger font size for nav items */
 }
 
 nav a:hover {
-    color: var(--secondary-color);
+    color: var(--secondary-color); /* Change color on hover */
 }
 
 h1.admin {
-    text-align: center;
-    font-family: bingo;
-    font-size: 5em;
-    margin-top: 1%;
-    background: linear-gradient(to bottom, rgb(72, 107, 170), rgb(218, 231, 244));
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
+    text-align: center; /* Center the admin title */
+    font-family: bingo; /* Custom font for admin title */
+    font-size: 5em; /* Large font size */
+    margin-top: 1%; /* Margin on top */
+    background: linear-gradient(to bottom, rgb(72, 107, 170), rgb(218, 231, 244)); /* Gradient background */
+    -webkit-text-fill-color: transparent; /* Make text transparent */
+    -webkit-background-clip: text; /* Clip background to text */
 }
 
 label {
-    display: block;
-    margin-bottom: 5px;
-    color: var(--text-color);
+    display: block; /* Block display for labels */
+    margin-bottom: 5px; /* Space below labels */
+    color: var(--text-color); /* Label text color */
 }
 
 input, select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    transition: border-color 0.3s ease;
+    width: 100%; /* Full width for inputs and selects */
+    padding: 10px; /* Internal padding */
+    margin-bottom: 15px; /* Space below elements */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded corners */
+    transition: border-color 0.3s ease; /* Smooth border color transition */
 }
 
 input:focus, select:focus {
-    border-color: var(--primary-color);
-    outline: none;
+    border-color: var(--primary-color); /* Change border color on focus */
+    outline: none; /* Remove default outline */
 }
 
 button {
-    padding: 10px 20px;
-    width: 100%;
-    background-color: var(--primary-color);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    color: var(--background-color);
-    transition: background-color 0.3s ease;
+    padding: 10px 20px; /* Internal padding for buttons */
+    width: 100%; /* Full width for buttons */
+    background-color: var(--primary-color); /* Button background color */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size for button text */
+    color: var(--background-color); /* Button text color */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
 }
 
 button:hover {
-    background-color: #5a91d9;
+    background-color: #5a91d9; /* Change background color on hover */
 }
 
 .footer-dark {
-    padding: 40px 0;
-    color: #f0f9ff;
-    background-color: var(--primary-color);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 13em;
+    padding: 40px 0; /* Vertical padding for footer */
+    color: #f0f9ff; /* Text color in footer */
+    background-color: var(--primary-color); /* Footer background color */
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Column layout */
+    align-items: center; /* Center items */
+    margin-top: 13em; /* Space above footer */
 }
 
 .footer-dark h3 {
-    margin-top: 0;
-    margin-bottom: 12px;
-    font-weight: bold;
-    font-size: 18px;
-    text-transform: uppercase;
-    color: var(--background-color);
+    margin-top: 0; /* No top margin */
+    margin-bottom: 12px; /* Space below heading */
+    font-weight: bold; /* Bold heading */
+    font-size: 18px; /* Font size for footer heading */
+    text-transform: uppercase; /* Uppercase text */
+    color: var(--background-color); /* Footer heading text color */
 }
 
 .footer-dark ul {
-    padding: 0;
-    list-style: none;
-    line-height: 1.6;
-    font-size: 14px;
-    margin-bottom: 0;
+    padding: 0; /* No padding */
+    list-style: none; /* Remove bullet points */
+    line-height: 1.6; /* Line height for readability */
+    font-size: 14px; /* Font size for footer list */
+    margin-bottom: 0; /* No bottom margin */
 }
 
 .footer-dark ul a {
-    color: inherit;
-    text-decoration: none;
-    opacity: 0.7;
-    transition: opacity 0.3s, color 0.3s;
+    color: inherit; /* Inherit color from parent */
+    text-decoration: none; /* Remove underline from links */
+    opacity: 0.7; /* Slightly transparent links */
+    transition: opacity 0.3s, color 0.3s; /* Smooth transition for hover effects */
 }
 
 .footer-dark ul a:hover {
-    opacity: 1;
-    color: var(--primary-color);
+    opacity: 1; /* Fully opaque on hover */
+    color: var(--primary-color); /* Change color on hover */
 }
 
 .footer-dark .copyright {
-    text-align: center;
-    padding-top: 24px;
-    opacity: 0.3;
-    font-size: 13px;
-    margin-bottom: 0;
-    width: 100%;
+    text-align: center; /* Center copyright text */
+    padding-top: 24px; /* Space above copyright */
+    opacity: 0.3; /* Slightly transparent */
+    font-size: 13px; /* Font size for copyright */
+    margin-bottom: 0; /* No bottom margin */
+    width: 100%; /* Full width for copyright */
 }
 
-
-
+/* Responsive styles for smaller screens */
 @media (max-width: 768px) {
     nav {
-        flex-direction: column;
+        flex-direction: column; /* Stack nav items vertically */
     }
 
     nav li {
-        margin: 10px 0;
-        font-size: 2em;
+        margin: 10px 0; /* Space between nav items */
+        font-size: 2em; /* Adjust font size for smaller screens */
     }
 
     .container, .admin-controls {
-        width: 95%;
-        padding: 10px;
+        width: 95%; /* Adjust width for smaller screens */
+        padding: 10px; /* Adjust padding */
     }
 
     h1.admin {
-        font-size: 3em; 
+        font-size: 3em;  /* Smaller font size for admin title */
     }
 
     .footer-dark .container {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: column; /* Stack footer items vertically */
+        align-items: center; /* Center footer items */
     }
 }

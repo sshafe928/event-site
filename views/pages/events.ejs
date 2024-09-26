@@ -15,7 +15,7 @@
         <main>
             <div class="content-wrap">
                 <% if (!isAdmin) { %>
-                <h1>Events List</h1>
+                <h1>Events List</h1><!-- Display title for regular users -->
                 <% } %>
 
                 <!-- Admin Controls-->
@@ -26,16 +26,63 @@
                             <tr>
                                 <td>
                                     <h3>Add Event</h3>
-                                    <form action="/events/add" method="POST">
+                                    <form action="/events/add" method="POST"><!-- Form to add a new event -->
                                         <label for="name">Name:</label>
                                         <input type="text" id="name" name="name" required>
                                         <label for="type">Type:</label>
                                         <input type="text" id="type" name="type" required>
+                                        Sure! Here’s your HTML code with general comments added throughout:
+                                        
+                                        html
+                                        Copy code
+                                        <!DOCTYPE html>
+                                        <html lang="en">
+                                        <head>
+                                            <meta charset="UTF-8">
+                                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                            <title>Events Page</title>
+                                            <link rel="stylesheet" type="text/css" href="/public/css/styles.css"> <!-- Link to CSS stylesheet -->
+                                        </head>
+                                        <body>
+                                            <div class="page-container">
+                                                <header>
+                                                    <!-- Include EJS header partial -->
+                                                    <%- include('../partials/header') %>
+                                                </header>
+                                                <main>
+                                                    <div class="content-wrap">
+                                                        <% if (!isAdmin) { %>
+                                                            <h1>Events List</h1> <!-- Display title for regular users -->
+                                                        <% } %>
+                                        
+                                                        <!-- Admin Controls Section -->
+                                                        <% if (isAdmin) { %>
+                                                            <div class="admin-controls">
+                                                                <h2>Admin Controls</h2>
+                                                                <table>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <h3>Add Event</h3>
+                                                                            <form action="/events/add" method="POST"> <!-- Form to add a new event -->
+                                                                                <label for="name">Name:</label>
+                                                                                <input type="text" id="name" name="name" required>
+                                                                                <label for="type">Type:</label>
+                                                                                <input type="text" id="type" name="type" required>
+                                                                                <label for="date">Date:</label>
+                                                                                <input type="date" id="date" name="date" required>
+                                                                                <label for="attendees">Attendees:</label>
+                                                                                <input type="number" id="attendees" name="attendees" required>
+                                                                                <button type="submit">Add Event</button> <!-- Button to submit form -->
+                                                                            </form>
+                                                                        </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
                                         <label for="date">Date:</label>
                                         <input type="date" id="date" name="date" required>
                                         <label for="attendees">Attendees:</label>
                                         <input type="number" id="attendees" name="attendees" required>
-                                        <button type="submit">Add Event</button>
+                                        <button type="submit">Add Event</button><!-- Button to submit form -->
                                     </form>
                                 </td>
                             </tr>
@@ -52,6 +99,7 @@
                             Attendees: <%= event.attendees %>
                             
                             <% if (isAdmin) { %>
+                                <!-- Edit and Delete buttons for admin users -->
                                 <button class="edit-button"><a href="/edits/<%= event.id %>/edit">Edit</a></button>
                                 <form action="/events/<%= event.id %>/delete" method="POST" style="display:inline;">
                                     <button class="delete-button" type="submit">Delete</button></form>
@@ -60,12 +108,13 @@
                     <% }); %>
                 </ul>
                 <% if (!isAdmin) { %>
-                <h1>Register</h1>
-                <form id="registrationForm" action="/events" method="post">
+                <h1>Register</h1><!-- Title for registration section -->
+                <form id="registrationForm" action="/events" method="post"><!-- Form for event registration -->
+                    
                     <label for="event">Event:</label>
                     <select id="event" name="event">
                         <% events.forEach(function(event) { %>
-                            <option value="<%= event.name %>"><%= event.name %></option>
+                            <option value="<%= event.name %>"><%= event.name %></option> <!-- Dropdown for event selection -->
                         <% }); %>
                     </select>
 
@@ -81,6 +130,7 @@
             </div>
         </main>
         <footer>
+            <!-- Include EJS footer partial -->
             <%- include('../partials/footer') %>
         </footer>
     </div>
