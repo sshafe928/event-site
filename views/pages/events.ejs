@@ -31,53 +31,6 @@
                                         <input type="text" id="name" name="name" required>
                                         <label for="type">Type:</label>
                                         <input type="text" id="type" name="type" required>
-                                        Sure! Here’s your HTML code with general comments added throughout:
-                                        
-                                        html
-                                        Copy code
-                                        <!DOCTYPE html>
-                                        <html lang="en">
-                                        <head>
-                                            <meta charset="UTF-8">
-                                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                            <title>Events Page</title>
-                                            <link rel="stylesheet" type="text/css" href="/public/css/styles.css"> <!-- Link to CSS stylesheet -->
-                                        </head>
-                                        <body>
-                                            <div class="page-container">
-                                                <header>
-                                                    <!-- Include EJS header partial -->
-                                                    <%- include('../partials/header') %>
-                                                </header>
-                                                <main>
-                                                    <div class="content-wrap">
-                                                        <% if (!isAdmin) { %>
-                                                            <h1>Events List</h1> <!-- Display title for regular users -->
-                                                        <% } %>
-                                        
-                                                        <!-- Admin Controls Section -->
-                                                        <% if (isAdmin) { %>
-                                                            <div class="admin-controls">
-                                                                <h2>Admin Controls</h2>
-                                                                <table>
-                                                                    <tr>
-                                                                        <td>
-                                                                            <h3>Add Event</h3>
-                                                                            <form action="/events/add" method="POST"> <!-- Form to add a new event -->
-                                                                                <label for="name">Name:</label>
-                                                                                <input type="text" id="name" name="name" required>
-                                                                                <label for="type">Type:</label>
-                                                                                <input type="text" id="type" name="type" required>
-                                                                                <label for="date">Date:</label>
-                                                                                <input type="date" id="date" name="date" required>
-                                                                                <label for="attendees">Attendees:</label>
-                                                                                <input type="number" id="attendees" name="attendees" required>
-                                                                                <button type="submit">Add Event</button> <!-- Button to submit form -->
-                                                                            </form>
-                                                                        </td>
-                                                                    </tr>
-                                                                </table>
-                                                            </div>
                                         <label for="date">Date:</label>
                                         <input type="date" id="date" name="date" required>
                                         <label for="attendees">Attendees:</label>
